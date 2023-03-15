@@ -1,0 +1,105 @@
+{% extends "base.html" %} 
+
+{% block title %}Home{% endblock title %}
+
+{% block content %} 
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+    <section class="position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <!-- Sponsored POST START -->
+                    {% if sponsored_post %}
+                        {% include 'partials/_sponsored_news.html' with post=sponsored_post %}
+                    {% endif %}
+                    <!-- Sponsored POST END -->
+                    <!-- Divider -->
+                    <div class="border-bottom border-primary border-2 opacity-1 my-4"></div>
+                    <!-- Small card 6X6 START -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-4">
+                                <h2 class="m-0"><i class="bi bi-hourglass-top me-2"></i>Latest Posts</h2>
+                                <p>Latest breaking news and special reports</p>
+                            </div>
+                            <div class="row">
+                                {% for post in latest_posts %}
+                                {% include 'partials/_latestnews_card.html' %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Small card 6X6 END -->
+                </div>
+                <!-- Sidebar START -->
+                <div class="col-lg-3 mt-5 mt-lg-0">
+                    <div>
+                        <!-- Categories -->
+                        <div class="row g-2">
+                            <h5>Categories</h5>
+                            {% for category in categories %}
+                            {% include 'partials/_category_list.html' %}
+                            {% endfor %}
+                            <!-- View All Category button -->
+                            <!-- <div class="text-center mt-3">
+                                <a href="#" class="fw-bold text-body text-primary-hover text-decoration-underline">View all categories</a>
+                            </div> -->
+                        </div>
+                        <!-- Trending news -->
+                        <div>
+                            <h5 class="mt-5 mb-3"><i class="fas fa-fire me-1"></i> Trending news</h5>
+                            {% for post in trending_posts %}
+                            {% include 'partials/_trendingnews_list.html' %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- <div>
+                            <h5 class="mt-4 mb-3">Browse by Tags</h5>
+                            <ul class="list-inline">
+                                {% include 'partials/_tag.html' %}
+                            </ul>
+                        </div> -->
+
+                    </div>
+                </div>
+                <!-- Sidebar END -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= Divider START -->
+    <div class="container">
+        <div class="border-bottom border-secondary opacity-2 mb-0 mt-2"></div>
+    </div>
+    <!-- ======================= Divider END -->
+
+    <!-- ======================= News by Categories START -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row g-4">
+                
+                {% for category, posts in context.items %}
+                <div class="col-lg-4">
+                    <h4 class="mb-3">{{ category.name }}</h4>
+                    <div class="bg-light">
+                        {% for post in posts %}
+                            {% if forloop.first %}
+                                {% include 'partials/_category_featurednews.html' %}
+                            {% else %}
+                                {% include 'partials/_category_news.html' %}
+                            {% endif %} 
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    <!-- ======================= News by Categories END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+{% endblock content %}

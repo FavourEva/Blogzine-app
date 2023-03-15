@@ -1,0 +1,19 @@
+<div class="col-sm-6 col-lg-3">
+    <div class="card bg-transparent h-100">
+        {% if post.image %}
+        <img class="card-img rounded-0 grayscale" src="{{ post.image.url }}" alt="{{ post.image_caption }}">
+        {% endif %}
+        <div class="card-body px-0 pt-3">
+            <ul class="nav nav-divider align-items-center small mb-2">
+                <li class="nav-item">
+                    <a href="#" class="text-reset btn-link">{{ post.author }}</a>
+                </li>
+                <li class="nav-item">{{ post.publish|date:"F j, Y" }}</li>
+            </ul>
+            <h5 class="card-title">
+                <a href="{{ post.get_absolute_url }}" class="btn-link text-reset fw-bold stretched-link">{{ post.title }}</a>
+            </h5>
+            <p>{{ post.excerpt|truncatechars:100 }}</p>
+        </div>
+    </div>
+</div>
