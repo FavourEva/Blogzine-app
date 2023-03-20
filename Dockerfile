@@ -31,3 +31,9 @@ COPY . .
 
 # Verify the running processes are healthy
 HEALTHCHECK --interval=30s --timeout=30s --start-period=30s --retries=3 CMD curl --fail http://localhost:8000/ || exit 1
+
+# Makeit executable
+RUN chmod +x ./entrypoint.sh
+# runs the production server
+EXPOSE 8000
+ENTRYPOINT ["./entrypoint.sh"]
