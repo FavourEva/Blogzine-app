@@ -203,8 +203,8 @@ workflows:
             requires: ["terraform-plan"]
         - terraform-run:
             requires: ["hold-apply"]
-       - terraform-plan-stop:
-          requires: ["terraform-run"]
+        - terraform-plan-stop:
+            requires: ["terraform-run"]
         - hold-destroy:
             type: approval
             requires: ["terraform-plan-stop"]
