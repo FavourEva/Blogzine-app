@@ -79,7 +79,7 @@ spec:
                 configMapKeyRef:
                   key: SQL_USER
                   name: env
-          image: web
+          image: favoueva/blogzine-web
           name: web
           ports:
             - containerPort: 8000
