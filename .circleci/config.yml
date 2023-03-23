@@ -144,8 +144,6 @@ jobs:
             kubectl apply -f manifest/
             kubectl get pods
             kubectl get services
-            
-      - delete-all-pods
       
   deploy-sock-shop:
     docker:
@@ -169,8 +167,6 @@ jobs:
             sed -i "s|IMAGE|$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$DOCKER_USERNAME/$MY_APP:latest|g" kubernetes/*yaml
             kubectl create namespace sock-shop
             kubectl apply -f kubernetes/
-         
-      - delete-all-pods
 
   deploy-prometheus:
     docker:
@@ -193,8 +189,6 @@ jobs:
           command: |
             sed -i "s|IMAGE|$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$DOCKER_USERNAME/$MY_APP:latest|g" kubernetes/manifests-monitoring/*yaml
             kubectl apply -f kubernetes/manifests-monitoring/
-            
-      - delete-all-pods
       
 workflows:
   version: 2
