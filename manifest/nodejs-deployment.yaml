@@ -23,7 +23,7 @@ spec:
         kompose.version: 1.28.0 (c4137012e)
       creationTimestamp: null
       labels:
-        io.kompose.network/node-project-app-network: "true"
+        io.kompose.network/node-app-app-network: "true"
         io.kompose.service: nodejs
     spec:
       containers:
@@ -50,7 +50,7 @@ spec:
                 configMapKeyRef:
                   key: MONGO_USERNAME
                   name: env
-          image: maiempire/nodejs
+          image: favoureva/nodejs
           name: nodejs
           ports:
             - containerPort: 8080

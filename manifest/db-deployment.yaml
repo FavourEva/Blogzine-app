@@ -22,7 +22,7 @@ spec:
         kompose.version: 1.28.0 (c4137012e)
       creationTimestamp: null
       labels:
-        io.kompose.network/node-project-app-network: "true"
+        io.kompose.network/node-app-app-network: "true"
         io.kompose.service: db
     spec:
       containers:

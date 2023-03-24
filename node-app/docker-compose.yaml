@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: maiempire/nodejs
-    container_name: maiempire/nodejs
+    image: favoureva/nodejs
+    container_name: nodejs
     restart: always
     env_file: .env
     environment:
