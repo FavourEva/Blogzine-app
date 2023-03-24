@@ -193,26 +193,26 @@ workflows:
   version: 2
   nodejs-deployment:
      jobs:
-        # - terraform-initialize
-        # - terraform-plan:
-        #     requires: ["terraform-initialize"]
-        # - hold-apply:
-        #     type: approval
-        #     requires: ["terraform-plan"]
-        # - terraform-run:
-        #     requires: ["hold-apply"]
-        # - terraform-plan-stop:
-        #     requires: ["terraform-run"]
-        # - hold-destroy:
-        #     type: approval
-        #     requires: ["terraform-plan-stop"]
-        # - terraform-stop:
-        #     requires: ["hold-destroy"]  
-        # - build-nodejs-app:
-        #      requires: ["terraform-run"]
-        - deploy-nodejs-app
-            # requires: [terraform-run]
-        - deploy-sock-shop
-            # requires: [terraform-run]
-        - deploy-prometheus
-            # requires: [terraform-run]
+        - terraform-initialize
+        - terraform-plan:
+            requires: ["terraform-initialize"]
+        - hold-apply:
+            type: approval
+            requires: ["terraform-plan"]
+        - terraform-run:
+            requires: ["hold-apply"]
+        - terraform-plan-stop:
+            requires: ["terraform-run"]
+        - hold-destroy:
+            type: approval
+            requires: ["terraform-plan-stop"]
+        - terraform-stop:
+            requires: ["hold-destroy"]  
+        - build-nodejs-app:
+             requires: ["terraform-run"]
+        - deploy-nodejs-app:
+            requires: [terraform-run]
+        - deploy-sock-shop:
+            requires: [terraform-run]
+        - deploy-prometheus:
+            requires: [terraform-run]
